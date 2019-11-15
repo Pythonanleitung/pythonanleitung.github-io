@@ -115,13 +115,13 @@ for numc, chapter in enumerate(chapters_list):
 
 strings = dict()
 #strings['back'] = "[Zurück zu Kapitel {index}: {name}]({filename}) | ".format(index=chapter_index, name=prev[0], filename=prev[1])
-strings['inhalt'] = "[Home]({filename}) | ".format(filename="README.md")
-strings['next'] = "[Weiter: Kapitel {index} - {name}]({filename}) | ".format(index=1, name = chapters_list[0][0], filename=chapters_list[0][2])
-inhaltsstrings = [" 1. [{0}{1}]({2})".format( x[0], " - " + x[1] if x[1] else "" , x[2]) for x in chapters_list]
+strings['inhalt'] = "[Home](/INDEX.md) | "
+strings['next'] = "[Weiter: Kapitel {index} - {name}](/docs/{filename}) | ".format(index=1, name = chapters_list[0][0], filename=chapters_list[0][2])
+inhaltsstrings = [" 1. [{0}{1}](/docs/{2})".format( x[0], " - " + x[1] if x[1] else "" , x[2]) for x in chapters_list]
 strings['inhaltsverzeichnis'] = ''.join([''.join(i) for i in index_lines])
 
 with open(src("README.md"), 'r') as s:
-    with open(dest("README.md"), 'w') as d:
+    with open("INDEX.md", 'w') as d:
             text = s.read()
             text = text.format(**strings)
             d.write(text)
